@@ -1,0 +1,22 @@
+
+@screenHeight:100vh;
+@screenWidth:100vw;
+
+.van-sidebar{
+  float: left;
+}
+
+.right{
+  position: absolute;
+  display: block;
+  float: right;
+  margin-left: 80px;
+  height: calc(@screenHeight - 50px);
+  width: calc(@screenWidth - 80px);
+  line-height:calc(@screenHeight - 50px);
+}
+
+.right>div{
+  align-self: center;
+  height: calc(@screenHeight - 50px);
+}
