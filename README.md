@@ -9,7 +9,6 @@
 ###### 5.vue-axios网络请求库的使用：
 ###### 6.webpack环境配置与express本地服务器搭建：
 ###### 7.本例中的其他内容：
-            使用的RN依赖库包含：
             less-loader：less样式加载组件；
             babel-loader：ES6转ES5组件；
             css-loader：css样式加载组件；
