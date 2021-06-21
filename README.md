@@ -19,12 +19,12 @@
             vconsole：腾讯开源控制台组件；
             其他；
 ### Vue Pages：
-<img src="/src/imgs/01.png" width="210" height="413"/>
-<img src="/src/imgs/02.png" width="210" height="413"/>
-<img src="/src/imgs/03.png" width="210" height="413"/>
-<img src="/src/imgs/04.png" width="210" height="413"/>
-<img src="/src/imgs/05.png" width="210" height="413"/>
-<img src="/src/imgs/06.png" width="210" height="413"/>
+<img src="/src/imgs/01.jpg" width="210" height="430"/>
+<img src="/src/imgs/02.jpg" width="210" height="430"/>
+<img src="/src/imgs/03.jpg" width="210" height="430"/>
+<img src="/src/imgs/04.jpg" width="210" height="430"/>
+<img src="/src/imgs/05.jpg" width="210" height="430"/>
+<img src="/src/imgs/06.jpg" width="210" height="430"/>
 
 # 编译与运行
 
