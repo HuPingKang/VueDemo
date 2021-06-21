@@ -54,6 +54,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### 致谢：
     ```
     尤雨溪Vue：https://cn.vuejs.org/
-    小马哥团队王红元老师Vue课程：<a href='https://www.bilibili.com/video/BV15741177Eh'/>
+    小马哥团队王红元老师Vue课程：https://www.bilibili.com/video/BV15741177Eh
     有赞团队开源Vant组件库：https://youzan.github.io/vant/?source=vuejsorg#/zh-CN/home
     ```
