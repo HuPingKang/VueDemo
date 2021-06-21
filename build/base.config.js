@@ -1,19 +1,84 @@
 
-
-//获取当前文件所在的位置
-const path = require('path');
-const webpack = require('webpack');
-//js压缩插件
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
 module.exports = {
-    entry:'./src/main.js',
+    entry:'../src/main.js',
     output:{
-        path:path.resolve(__dirname,'dist'),
+        path:path.resolve(__dirname,'../dist'),
         filename:'bundle.js',
         publicPath:'dist/'
     },
     mode:'production',
+
+    // 基本路径
+    publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+    // 输出文件目录
+    outputDir: 'dist', // 默认dist
+    // 用于嵌套生成的静态资产（js,css,img,fonts）目录
+    // assetsDir: '',
+    // 指定生成的 index.html 的输出路径 (相对于 outputDir)。也可以是一个绝对路径
+    indexPath: 'index.html', // Default: 'index.html'
+    filenameHashing: true,
+    // 构建多页时使用
+    pages: undefined,
+    // eslint-loader是否在保存的时候检查
+    lintOnSave: true,
+    // 是否使用包含运行时编译器的Vue核心的构建
+    runtimeCompiler: false,
+    // 默认情况下 babel-loader 会忽略所有 node_modules 中的文件。如果你想要通过 Babel 显式转译一个依赖，可以在这个选项中列出来
+    transpileDependencies: [],
+    // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
+    productionSourceMap: false,
+    // css相关配置
+    css: {
+        // 启用 CSS modules
+        requireModuleExtension: true,
+        // 是否使用css分离插件
+        extract: true,
+        // 开启 CSS source maps?
+        sourceMap: false,
+        // css预设器配置项
+        loaderOptions: {},
+    },
+    // webpack-dev-server 相关配置
+    devServer: {
+        contentBase:'./dist',
+        inline:true, //是否实时更新
+        publicPath: process.env.NODE_ENV === 'development' ? '/' : 'http://c.m.163.com/nc/article/headline',
+        open: true, //是否自动弹出浏览器页面
+        overlay: {
+            warnings: false,
+            errors: true
+        },
+        proxy: {
+            '/api': {
+                target: 'http://c.m.163.com/nc/article/headline', // 后端提供给你的接口地址 process.env.VUE_APP_URL, //
+                changeOrigin: true, // true开启跨域
+                pathRewrite: {
+                    '^/api': '/' // 代理api使用方法=> /api/test/where
+                },
+                secure: false,
+                // headers: {
+                //     Referer: 'http://c.m.163.com/nc/article/headline'
+                // },
+            },
+            '/seeNews':{
+                target: 'https://3g.163.com', // 后端提供给你的接口地址
+                changeOrigin: true, // true开启跨域
+                pathRewrite: {
+                    '^/seeNews': '/'
+                },
+                secure: false,
+                // headers: {
+                //     Referer: 'https://3g.163.com',
+                // },
+                router: {
+                    'localhost:3000': 'https://3g.163.com',
+                },
+            }
+        }
+    },
     module:{
         rules:[
             /*
@@ -83,7 +148,6 @@ module.exports = {
     resolve: {
         extensions:['.js','.css','.vue','.less'], //import文件时，可以省略的扩展名
         alias: {
-            // "vue$":'vue/dist/vue.esm.js',
             "assets":'@/assets',
             "components":'@/components',
             "pages":'@/pages',
@@ -97,4 +161,5 @@ module.exports = {
         //js压缩
         new uglifyJsPlugin()
     ]
+
 }

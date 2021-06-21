@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
         <van-tabbar safe-area-inset-bottom v-model="active" @change="onChange">
-            <van-tabbar-item icon="home-o" >头条</van-tabbar-item>
+            <van-tabbar-item icon="home-o">头条</van-tabbar-item>
             <van-tabbar-item icon="diamond-o">热点</van-tabbar-item>
             <van-tabbar-item icon="hot-o">分类</van-tabbar-item>
             <van-tabbar-item icon="friends-o">我的</van-tabbar-item>

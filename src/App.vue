@@ -33,5 +33,5 @@
 </script>
 
 <style lang="less" scoped>
-    @import "./components/MainTab";
+    @import "./components/MainTab.less";
 </style>

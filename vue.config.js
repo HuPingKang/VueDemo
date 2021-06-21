@@ -1,6 +1,4 @@
 
-const express = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = {
 
     // 基本路径
@@ -23,12 +21,17 @@ module.exports = {
     // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
     productionSourceMap: false,
     // 如果这个值是一个对象，则会通过 webpack-merge 合并到最终的配置中。如果这个值是一个函数，则会接收被解析的配置作为参数。该函数及可以修改配置并不返回任何东西，也可以返回一个被克隆或合并过的配置版本。
-    configureWebpack: config => {
-        if (process.env.NODE_ENV === 'production') {
-            // 为生产环境修改配置...
-        } else {
-            // 为开发环境修改配置...
-        }
+    configureWebpack:  {
+        resolve: {
+            extensions:['.js','.css','.vue','.less'], //import文件时，可以省略的扩展名
+            alias: {
+                "assets":'@/assets',
+                "components":'@/components',
+                "pages":'@/pages',
+                "router":'@/router',
+                "store":'@/store',
+            }
+        },
     },
     // css相关配置
     css: {
@@ -43,7 +46,9 @@ module.exports = {
     },
     // webpack-dev-server 相关配置
     devServer: {
-        publicPath: process.env.NODE_ENV === 'development' ? '/' : './',
+        contentBase:'./dist',
+        inline:true, //是否实时更新
+        publicPath: process.env.NODE_ENV === 'development' ? '/' : 'http://c.m.163.com/nc/article/headline',
         open: true, //是否自动弹出浏览器页面
         overlay: {
             warnings: false,
@@ -51,7 +56,7 @@ module.exports = {
         },
         proxy: {
             '/api': {
-                target: 'http://c.m.163.com/nc/article/headline', // 后端提供给你的接口地址
+                target: 'http://c.m.163.com/nc/article/headline', // 后端提供给你的接口地址 process.env.VUE_APP_URL, //
                 changeOrigin: true, // true开启跨域
                 pathRewrite: {
                     '^/api': '/' // 代理api使用方法=> /api/test/where
@@ -60,9 +65,6 @@ module.exports = {
                 // headers: {
                 //     Referer: 'http://c.m.163.com/nc/article/headline'
                 // },
-                router:{
-                    "localhost:3000":"http://c.m.163.com/nc/article/headline"
-                }
             },
             '/seeNews':{
                 target: 'https://3g.163.com', // 后端提供给你的接口地址

@@ -52,13 +52,13 @@
             startRecord(){
                 // 停止获取语音流
                 // var options = [];
-                let callback = {success: function(msg){
-                        console.log("开始录音的回调信息",msg)
-                    }, error: function(error){
-                        console.log("失败回调:"+error);
-                    }};
+                // let callback = {success: function(msg){
+                //         console.log("开始录音的回调信息",msg)
+                //     }, error: function(error){
+                //         console.log("失败回调:"+error);
+                //     }};
                 //调用原生方法：
-                AudioUtilsModule.startStreamRecord(callback);
+                // AudioUtilsModule.startStreamRecord(callback);
                 console.log("app录音获取结束")
             },
             goBack:function () {

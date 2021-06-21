@@ -5,8 +5,8 @@ import 'vant/lib/index.css';
 import VueAxios from "vue-axios";
 import axios from "axios";
 import { Lazyload } from 'vant';
-import router from "./router/router";
-import store from "./store";
+import router from "./router/router.js";
+import store from "./store/index.js";
 
 import Vconsole from 'vconsole';
 
@@ -14,6 +14,9 @@ import {Toast} from "vant";
 
 let vConsole = new Vconsole();
 Vue.use(vConsole);
+
+console.log(process.env.VUE_APP_URL);
+console.log('获取代理地址');
 
 Vue.use(VueAxios,axios);
 Vue.use(Vant);

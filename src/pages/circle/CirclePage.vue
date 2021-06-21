@@ -19,7 +19,7 @@
                     <van-image style="display: block;height: 150px;object-fit: cover" :src="item.url" v-lazy="item.url"></van-image>
                     <div class="desc">{{item.digest}}</div>
                     <div class="card_bottom">
-                        <van-button class="show" type="info" @click="showSelect(item)">View Now<></van-button>
+                        <van-button class="show" type="info" @click="showSelect(item)">View Now</van-button>
                     </div>
                     <div class="space"></div>
                 </div>
@@ -87,10 +87,11 @@
                 this.pageIndex++;
                 let that = this;
                 this.loading = true;
+
                 Vue.axios.get('api/T1348647853363/'+this.pageIndex+'-10.html',{
+                    dataType:'jsonp'
                     // 还可以直接把参数拼接在url后边
                 }).then(function(res){
-
                     console.log('结束');
                     that.toast1.clear()
                     for (const re of res.data.T1348647853363) {
@@ -111,6 +112,7 @@
 
                 }).catch(function (error) {
                     console.log('结束'+error);
+                    console.log('end');
                     that.toast1.clear()
                     that.loading = false;
                 });

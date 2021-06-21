@@ -2,13 +2,13 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
 
-import NewsPage from "../pages/home/NewsPage";
-import SearchPage from "../pages/search/SearchPage";
-import CirclePage from "../pages/circle/CirclePage";
-import CircleWebPage from '../pages/circle/CircleWebPage';
-import SettingPage from "../pages/setting/SettingPage";
-import PasswordPage from "../pages/setting/PasswordPage";
-import MainTab from "../components/MainTab";
+import NewsPage from "../pages/home/NewsPage.vue";
+import SearchPage from "../pages/search/SearchPage.vue";
+import CirclePage from "../pages/circle/CirclePage.vue";
+import CircleWebPage from '../pages/circle/CircleWebPage.vue';
+import SettingPage from "../pages/setting/SettingPage.vue";
+import PasswordPage from "../pages/setting/PasswordPage.vue";
+import MainTab from "../components/MainTab.vue";
 
 Vue.use(VueRouter);
 
